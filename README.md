@@ -1,5 +1,13 @@
 # React Modal Example
 
+## Dependencies
+
+- Bootstrap
+
+```
+npm install --save bootstrap jquery popper.js
+```
+
 ## Running
 
 ```
