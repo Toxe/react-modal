@@ -52,14 +52,14 @@ export default function Modal(props) {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLabel">
-                            Input New Values
+                            {props.title}
                         </h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
-                        <p>Please enter a new first and last name and a counter value.</p>
+                        <p>{props.description}</p>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text">First name</span>

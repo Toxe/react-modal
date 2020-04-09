@@ -42,6 +42,8 @@ export default function Content() {
             </button>
             {modalVisible && (
                 <Modal
+                    title="Input New Values"
+                    description="Please enter a new first and last name and a counter value."
                     onSubmit={onSubmit}
                     onHidden={onHidden}
                     firstName={firstName}
