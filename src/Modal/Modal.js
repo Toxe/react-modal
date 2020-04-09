@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import TextField from "./TextField";
+import CounterField from "./CounterField";
 import jQuery from "jquery";
 
 export default function Modal(props) {
@@ -53,53 +55,9 @@ export default function Modal(props) {
                     </div>
                     <div className="modal-body">
                         <p>{props.description}</p>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">First name</span>
-                            </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-                        </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Last name</span>
-                            </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-                        </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Counter</span>
-                            </div>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={counter}
-                                onChange={(e) => setCounter(Number.parseInt(e.target.value))}
-                            />
-                            <div className="input-group-append">
-                                <button
-                                    className="btn btn-outline-secondary"
-                                    type="button"
-                                    onClick={() => setCounter(counter - 1)}>
-                                    -
-                                </button>
-                                <button
-                                    className="btn btn-outline-secondary"
-                                    type="button"
-                                    onClick={() => setCounter(counter + 1)}>
-                                    +
-                                </button>
-                            </div>
-                        </div>
+                        <TextField title="First name" value={firstName} onChange={setFirstName} />
+                        <TextField title="Last name" value={lastName} onChange={setLastName} />
+                        <CounterField title="Counter" value={counter} onChange={setCounter} />
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">
