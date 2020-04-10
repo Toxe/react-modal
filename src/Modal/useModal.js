@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import jQuery from "jquery";
 
-export default function useModal(onSubmit, onHidden, hideModal, formValues) {
+export default function useModal(onSubmit, onHidden, hideModal, initialFormValues) {
+    const [formValues, setFormValues] = useState(initialFormValues);
     const modalRef = useRef(null);
 
     const handleSubmit = (e) => {
@@ -36,5 +37,5 @@ export default function useModal(onSubmit, onHidden, hideModal, formValues) {
         };
     }, [hideModal, onHidden]);
 
-    return [modalRef, handleSubmit];
+    return [formValues, setFormValues, modalRef, handleSubmit];
 }

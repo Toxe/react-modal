@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import useModal from "./useModal";
-import TextField from "./TextField";
-import CounterField from "./CounterField";
 
 export default function Modal(props) {
-    const [firstName, setFirstName] = useState(props.firstName);
-    const [lastName, setLastName] = useState(props.lastName);
-    const [counter, setCounter] = useState(props.counter);
-    const [modalRef, handleSubmit] = useModal(props.onSubmit, props.onHidden, props.hideModal, {
-        firstName,
-        lastName,
-        counter,
-    });
+    const [formValues, setFormValues, modalRef, handleSubmit] = useModal(
+        props.onSubmit,
+        props.onHidden,
+        props.hideModal,
+        props.initialValues
+    );
+
+    const onChangeFormValue = (name, value) => {
+        setFormValues({ ...formValues, [name]: value });
+    };
 
     return (
         <div ref={modalRef} className="modal fade" id="exampleModal" tabIndex="-1" role="dialog">
@@ -19,17 +19,27 @@ export default function Modal(props) {
                 <div className="modal-content">
                     <form onSubmit={handleSubmit}>
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">{props.title}</h5>
-                            <button type="button" className="close" data-dismiss="modal"><span>&times;</span></button>
+                            <h5 className="modal-title" id="exampleModalLabel">
+                                {props.title}
+                            </h5>
+                            <button type="button" className="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
                         </div>
                         <div className="modal-body">
                             <p>{props.description}</p>
-                            <TextField title="First name" value={firstName} onChange={setFirstName} />
-                            <TextField title="Last name" value={lastName} onChange={setLastName} />
-                            <CounterField title="Counter" value={counter} onChange={setCounter} />
+
+                            {React.Children.map(props.children, (el) => {
+                                return React.cloneElement(el, {
+                                    value: formValues[el.props.name],
+                                    onChangeFormValue: onChangeFormValue,
+                                });
+                            })}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
                             <input type="submit" className="btn btn-primary" value="Save changes" />
                         </div>
                     </form>

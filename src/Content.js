@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal/Modal";
+import TextField from "./Modal/TextField";
+import CounterField from "./Modal/CounterField";
 
 export default function Content() {
     const [firstName, setFirstName] = useState("Test");
@@ -39,10 +41,11 @@ export default function Content() {
                     onSubmit={onSubmit}
                     onHidden={onHidden}
                     hideModal={() => setModalVisible(false)}
-                    firstName={firstName}
-                    lastName={lastName}
-                    counter={counter}
-                />
+                    initialValues={{ firstName, lastName, counter }}>
+                    <TextField name="firstName" title="First name" />
+                    <TextField name="lastName" title="Last name" />
+                    <CounterField name="counter" title="Counter" />
+                </Modal>
             )}
         </>
     );
