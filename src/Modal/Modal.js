@@ -1,56 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
+import useModal from "./useModal";
 import TextField from "./TextField";
 import CounterField from "./CounterField";
-import jQuery from "jquery";
 
 export default function Modal(props) {
     const [firstName, setFirstName] = useState(props.firstName);
     const [lastName, setLastName] = useState(props.lastName);
     const [counter, setCounter] = useState(props.counter);
-    const modalRef = useRef(null);
-
-    const submit = (e) => {
-        console.log("Modal.submit()");
-        e.preventDefault();
-
-        props.onSubmit({
-            firstName,
-            lastName,
-            counter,
-        });
-
-        props.hideModal();
-    };
-
-    const shown = () => {
-        console.log("Modal.shown()");
-    };
-
-    const hidden = () => {
-        console.log("Modal.hidden()");
-        props.hideModal();
-        props.onHidden();
-    };
-
-    useEffect(() => {
-        console.log("Modal.setup()");
-        const modal = modalRef.current;
-
-        jQuery(modal).on("shown.bs.modal", shown);
-        jQuery(modal).on("hidden.bs.modal", hidden);
-        jQuery(modal).modal("show");
-
-        return () => {
-            console.log("Modal.cleanup()");
-            jQuery(modal).modal("hide");
-        };
-    }, []);
+    const [modalRef, handleSubmit] = useModal(props.onSubmit, props.onHidden, props.hideModal, {
+        firstName,
+        lastName,
+        counter,
+    });
 
     return (
         <div ref={modalRef} className="modal fade" id="exampleModal" tabIndex="-1" role="dialog">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                    <form onSubmit={submit}>
+                    <form onSubmit={handleSubmit}>
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">
                                 {props.title}
