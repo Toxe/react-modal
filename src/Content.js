@@ -12,12 +12,10 @@ export default function Content() {
         setFirstName(values.firstName);
         setLastName(values.lastName);
         setCounter(values.counter);
-        setModalVisible(false);
     };
 
     const onHidden = () => {
         console.log("App.onHidden()");
-        setModalVisible(false);
     };
 
     return (
@@ -46,6 +44,7 @@ export default function Content() {
                     description="Please enter a new first and last name and a counter value."
                     onSubmit={onSubmit}
                     onHidden={onHidden}
+                    hideModal={() => setModalVisible(false)}
                     firstName={firstName}
                     lastName={lastName}
                     counter={counter}

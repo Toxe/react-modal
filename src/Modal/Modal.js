@@ -12,11 +12,14 @@ export default function Modal(props) {
     const submit = (e) => {
         console.log("Modal.submit()");
         e.preventDefault();
+
         props.onSubmit({
             firstName,
             lastName,
             counter,
         });
+
+        props.hideModal();
     };
 
     const shown = () => {
@@ -25,6 +28,7 @@ export default function Modal(props) {
 
     const hidden = () => {
         console.log("Modal.hidden()");
+        props.hideModal();
         props.onHidden();
     };
 
