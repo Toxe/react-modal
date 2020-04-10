@@ -9,8 +9,9 @@ export default function Modal(props) {
     const [counter, setCounter] = useState(props.counter);
     const modalRef = useRef(null);
 
-    const submit = () => {
+    const submit = (e) => {
         console.log("Modal.submit()");
+        e.preventDefault();
         props.onSubmit({
             firstName,
             lastName,
@@ -45,28 +46,28 @@ export default function Modal(props) {
         <div ref={modalRef} className="modal fade" id="exampleModal" tabIndex="-1" role="dialog">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">
-                            {props.title}
-                        </h5>
-                        <button type="button" className="close" data-dismiss="modal">
-                            <span>&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        <p>{props.description}</p>
-                        <TextField title="First name" value={firstName} onChange={setFirstName} />
-                        <TextField title="Last name" value={lastName} onChange={setLastName} />
-                        <CounterField title="Counter" value={counter} onChange={setCounter} />
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" className="btn btn-primary" onClick={submit}>
-                            Save changes
-                        </button>
-                    </div>
+                    <form onSubmit={submit}>
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">
+                                {props.title}
+                            </h5>
+                            <button type="button" className="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <p>{props.description}</p>
+                            <TextField title="First name" value={firstName} onChange={setFirstName} />
+                            <TextField title="Last name" value={lastName} onChange={setLastName} />
+                            <CounterField title="Counter" value={counter} onChange={setCounter} />
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                            <input type="submit" className="btn btn-primary" value="Save changes" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
