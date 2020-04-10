@@ -1,5 +1,6 @@
 import React from "react";
 import useModal from "./useModal";
+import FieldList from "./FieldList";
 
 export default function Modal(props) {
     const [formValues, setFormValues, modalRef, handleSubmit] = useModal(
@@ -28,13 +29,11 @@ export default function Modal(props) {
                         </div>
                         <div className="modal-body">
                             <p>{props.description}</p>
-
-                            {React.Children.map(props.children, (el) => {
-                                return React.cloneElement(el, {
-                                    value: formValues[el.props.name],
-                                    onChangeFormValue: onChangeFormValue,
-                                });
-                            })}
+                            <FieldList
+                                fields={props.children}
+                                formValues={formValues}
+                                onChangeFormValue={onChangeFormValue}
+                            />
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">
