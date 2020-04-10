@@ -23,17 +23,11 @@ export default function Content() {
             <p>Click "Show Modal" to show a Modal and enter some values.</p>
             <dl className="row p-4">
                 <dt className="col-sm-1">First name</dt>
-                <dd className="col-sm-11">
-                    <em>{firstName}</em>
-                </dd>
+                <dd className="col-sm-11"><em>{firstName}</em></dd>
                 <dt className="col-sm-1">Last name</dt>
-                <dd className="col-sm-11">
-                    <em>{lastName}</em>
-                </dd>
+                <dd className="col-sm-11"><em>{lastName}</em></dd>
                 <dt className="col-sm-1">Counter</dt>
-                <dd className="col-sm-11">
-                    <em>{counter}</em>
-                </dd>
+                <dd className="col-sm-11"><em>{counter}</em></dd>
             </dl>
             <button type="button" className="btn btn-primary" onClick={() => setModalVisible(true)}>
                 Show Modal

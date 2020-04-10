@@ -13,18 +13,8 @@ export default function CounterField(props) {
                 onChange={(e) => props.onChange(Number.parseInt(e.target.value))}
             />
             <div className="input-group-append">
-                <button
-                    type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={() => props.onChange(props.value - 1)}>
-                    -
-                </button>
-                <button
-                    type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={() => props.onChange(props.value + 1)}>
-                    +
-                </button>
+                <button type="button" className="btn btn-outline-secondary" onClick={() => props.onChange(props.value - 1)}>-</button>
+                <button type="button" className="btn btn-outline-secondary" onClick={() => props.onChange(props.value + 1)}>+</button>
             </div>
         </div>
     );
