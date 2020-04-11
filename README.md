@@ -1,5 +1,9 @@
 # React Modal Example
 
+![Screenshot](screenshot.png)
+
+Live demo: https://codesandbox.io/s/github/Toxe/react-modal
+
 ## Dependencies
 
 - Bootstrap
