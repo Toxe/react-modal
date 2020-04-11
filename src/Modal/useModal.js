@@ -14,8 +14,8 @@ export default function useModal(onSubmit, onHidden, hideModal, initialFormValue
         console.log("useModal.handleSubmit()");
         e.preventDefault();
 
-        if (onSubmit !== undefined) onSubmit(formValues);
         hideModal();
+        if (onSubmit !== undefined) onSubmit(formValues);
     };
 
     useEffect(() => {
