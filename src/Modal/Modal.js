@@ -3,16 +3,12 @@ import useModal from "./useModal";
 import FieldList from "./FieldList";
 
 export default function Modal(props) {
-    const [formValues, setFormValues, modalRef, handleSubmit] = useModal(
+    const [formValues, modalRef, handleSubmit, onChangeFormValue] = useModal(
         props.onSubmit,
         props.onHidden,
         props.hideModal,
         props.initialValues
     );
-
-    const onChangeFormValue = (name, value) => {
-        setFormValues({ ...formValues, [name]: value });
-    };
 
     return (
         <div ref={modalRef} className="modal fade" id="exampleModal" tabIndex="-1" role="dialog">

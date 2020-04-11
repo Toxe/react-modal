@@ -5,6 +5,10 @@ export default function useModal(onSubmit, onHidden, hideModal, initialFormValue
     const [formValues, setFormValues] = useState(initialFormValues);
     const modalRef = useRef(null);
 
+    const onChangeFormValue = (name, value) => {
+        setFormValues({ ...formValues, [name]: value });
+    };
+
     // handle form submit button click or pressing enter
     const handleSubmit = (e) => {
         console.log("useModal.handleSubmit()");
@@ -38,5 +42,5 @@ export default function useModal(onSubmit, onHidden, hideModal, initialFormValue
         };
     }, [hideModal, onHidden]);
 
-    return [formValues, setFormValues, modalRef, handleSubmit];
+    return [formValues, modalRef, handleSubmit, onChangeFormValue];
 }
