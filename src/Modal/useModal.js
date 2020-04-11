@@ -5,6 +5,7 @@ export default function useModal(onSubmit, onHidden, hideModal, initialFormValue
     const [formValues, setFormValues] = useState(initialFormValues);
     const modalRef = useRef(null);
 
+    // handle form submit button click or pressing enter
     const handleSubmit = (e) => {
         console.log("useModal.handleSubmit()");
         e.preventDefault();
