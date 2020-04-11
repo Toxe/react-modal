@@ -10,14 +10,14 @@ export default function Content() {
     const [modalVisible, setModalVisible] = useState(false);
 
     const onSubmit = (values) => {
-        console.log("App.onSubmit()");
+        console.log("Content.onSubmit()");
         setFirstName(values.firstName);
         setLastName(values.lastName);
         setCounter(values.counter);
     };
 
     const onHidden = () => {
-        console.log("App.onHidden()");
+        console.log("Content.onHidden()");
     };
 
     return (
