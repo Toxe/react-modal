@@ -14,7 +14,7 @@ export default function useModal(onSubmit, onHidden, hideModal, initialFormValue
         console.log("useModal.handleSubmit()");
         e.preventDefault();
 
-        onSubmit(formValues);
+        if (onSubmit !== undefined) onSubmit(formValues);
         hideModal();
     };
 
@@ -22,7 +22,7 @@ export default function useModal(onSubmit, onHidden, hideModal, initialFormValue
         const hidden = () => {
             console.log("useModal.hidden()");
             hideModal();
-            onHidden();
+            if (onHidden !== undefined) onHidden();
         };
 
         const shown = () => {
