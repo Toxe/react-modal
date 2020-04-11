@@ -4,8 +4,8 @@ import TextField from "./Modal/TextField";
 import CounterField from "./Modal/CounterField";
 
 export default function Content() {
-    const [firstName, setFirstName] = useState("Test");
-    const [lastName, setLastName] = useState("Test");
+    const [firstName, setFirstName] = useState("First");
+    const [lastName, setLastName] = useState("Last");
     const [counter, setCounter] = useState(10);
     const [modalVisible, setModalVisible] = useState(false);
 
